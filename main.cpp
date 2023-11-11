@@ -10,6 +10,10 @@
 **/
 
 
+// Please note that the assets were taken from https://mattwalkden.itch.io/lunar-battle-pack
+// I was hoping they were going to look better than they actually do. 
+// The rocket image was taken from https://www.pngall.com/rocket-png/, by PNG All, CC-BY-NC
+// the "fire" under the rocket was taken from lunar-battle-pack, and attached to the rocket.
 
 
 
@@ -160,7 +164,7 @@ GLuint load_texture(const char* filepath)
 void initialise()
 {
     SDL_Init(SDL_INIT_VIDEO);
-    g_display_window = SDL_CreateWindow("Hello, Entities!",
+    g_display_window = SDL_CreateWindow("Lunar Lander",
         SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
         WINDOW_WIDTH, WINDOW_HEIGHT,
         SDL_WINDOW_OPENGL);
