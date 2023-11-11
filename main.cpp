@@ -93,6 +93,8 @@ float g_time_accumulator = 0.0f;
 
 
 // FUEL Mechanism
+// as far as requirement #2 is concerned: it will not come to a stop if an accelleration is applied, assuming no friction. 
+// I don't think it can come to a stop if your request is to apply an accelleration with the arrow keys. 
 
 int avaliable_fuel = 1000;
 
