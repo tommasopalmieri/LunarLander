@@ -89,6 +89,7 @@ void Entity::draw_sprite_from_texture_atlas(ShaderProgram* program, GLuint textu
     glDisableVertexAttribArray(program->get_tex_coordinate_attribute());
 }
 
+
 int Entity::update(float delta_time, Entity* collidable_entities, int collidable_entity_count, Entity* failure_collisions, int failure_collision_count)
 {
 
@@ -133,10 +134,6 @@ int Entity::update(float delta_time, Entity* collidable_entities, int collidable
         
     if (m_position.y < 3.75f) {
     
-
-
-        // ––––– GRAVITY ––––– //
-        m_velocity.x = m_movement.x * m_speed;
         m_velocity += m_acceleration * delta_time;
 
         m_position.y += m_velocity.y * delta_time;
@@ -167,14 +164,26 @@ int Entity::update(float delta_time, Entity* collidable_entities, int collidable
 
 
     else {
+
+        // Bounce when the ship gets to the top border. 
+
         m_position.y = 3.70f;
+        m_velocity.y = -m_velocity.y/10;
         
     
     }
 
 
 
+    if (m_position.x > 5.0f) {
+        m_position.x = 5.0f;
+        m_velocity.x = -m_velocity.x / 10;
+    }
 
+    if (m_position.x < -5.0f) {
+        m_position.x = -5.0f;
+        m_velocity.x = -m_velocity.x / 10;
+    }
 
     
     if (failure_collision) return -1;

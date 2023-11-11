@@ -19,9 +19,9 @@
 #define GL_GLEXT_PROTOTYPES 1
 #define NUMBER_OF_ENEMIES 3
 #define FIXED_TIMESTEP 0.0166666f
-#define ACC_OF_GRAVITY -1.0f
-#define LEFT_ACCELERATION -90.0f
-#define RIGHT_ACCELERATION 90.0f
+#define ACC_OF_GRAVITY -0.5f
+#define LEFT_ACCELERATION -7.5f
+#define RIGHT_ACCELERATION 7.5f
 #define PLATFORM_COUNT 6
 #define FAILURE_PLATFORMS 6
 
@@ -90,6 +90,42 @@ glm::mat4 g_view_matrix, g_projection_matrix;
 
 float g_previous_ticks = 0.0f;
 float g_time_accumulator = 0.0f;
+
+
+// FUEL Mechanism
+
+int avaliable_fuel = 1000;
+
+void accLeft() {
+    if (avaliable_fuel > 0) {
+        g_game_state.player->set_acceleration(glm::vec3(LEFT_ACCELERATION, g_game_state.player->get_acceleration().y, 0.0f));
+        g_game_state.player->m_animation_indices = g_game_state.player->m_walking[g_game_state.player->LEFT];
+        avaliable_fuel--;
+        
+    }
+
+}
+
+void accRight() {
+    if (avaliable_fuel > 0) {
+        g_game_state.player->set_acceleration(glm::vec3(RIGHT_ACCELERATION, g_game_state.player->get_acceleration().y, 0.0f));
+        g_game_state.player->m_animation_indices = g_game_state.player->m_walking[g_game_state.player->LEFT];
+        avaliable_fuel--;
+    }
+
+
+}
+
+
+void accUp() {
+    if (avaliable_fuel > 0) {
+        g_game_state.player->set_acceleration(glm::vec3(0.0f, g_game_state.player->get_acceleration().y + 0.05f, 0.0f));
+        g_game_state.player->m_animation_indices = g_game_state.player->m_walking[g_game_state.player->UP];
+        avaliable_fuel--;
+    }
+
+}
+
 
 // ———— GENERAL FUNCTIONS ———— //
 GLuint load_texture(const char* filepath)
@@ -244,18 +280,21 @@ void process_input()
 
     if (key_state[SDL_SCANCODE_LEFT])
     {
-        g_game_state.player->set_acceleration(glm::vec3(LEFT_ACCELERATION, g_game_state.player->get_acceleration().y, 0.0f));
-        g_game_state.player->m_animation_indices = g_game_state.player->m_walking[g_game_state.player->LEFT];
+        accLeft();
+        //g_game_state.player->set_acceleration(glm::vec3(LEFT_ACCELERATION, g_game_state.player->get_acceleration().y, 0.0f));
+        //g_game_state.player->m_animation_indices = g_game_state.player->m_walking[g_game_state.player->LEFT];
     }
     else if (key_state[SDL_SCANCODE_RIGHT])
     {
-        g_game_state.player->set_acceleration(glm::vec3(RIGHT_ACCELERATION, g_game_state.player->get_acceleration().y, 0.0f));
-        g_game_state.player->m_animation_indices = g_game_state.player->m_walking[g_game_state.player->RIGHT];
+        accRight();
+        //g_game_state.player->set_acceleration(glm::vec3(RIGHT_ACCELERATION, g_game_state.player->get_acceleration().y, 0.0f));
+        //g_game_state.player->m_animation_indices = g_game_state.player->m_walking[g_game_state.player->RIGHT];
     }
     else if (key_state[SDL_SCANCODE_UP])
     {
-        g_game_state.player->set_acceleration(glm::vec3(0.0f, g_game_state.player->get_acceleration().y+0.05f, 0.0f));
-        g_game_state.player->m_animation_indices = g_game_state.player->m_walking[g_game_state.player->UP];
+        accUp();
+        //g_game_state.player->set_acceleration(glm::vec3(0.0f, g_game_state.player->get_acceleration().y+0.05f, 0.0f));
+        //g_game_state.player->m_animation_indices = g_game_state.player->m_walking[g_game_state.player->UP];
     }
     else
     {

@@ -67,6 +67,7 @@ public:
 
 
     void draw_sprite_from_texture_atlas(ShaderProgram* program, GLuint texture_id, int index);
+    bool in_screen();
     bool const check_collision(Entity* other) const;
     bool const check_collision_y(Entity* collidable_entities, int collidable_entity_count);
     bool const check_collision_x(Entity* collidable_entities, int collidable_entity_count);
