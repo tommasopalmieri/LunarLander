@@ -1,0 +1,9 @@
+﻿  Entity.cpp
+C:\Users\tommaso\OneDrive - Piqubo\Desktop\VisualStudioSDLProject\LunarLander\Entity.h(91,55): warning C4244: 'return': conversion from 'const float' to 'const int', possible loss of data
+C:\Users\tommaso\OneDrive - Piqubo\Desktop\VisualStudioSDLProject\LunarLander\Entity.h(92,55): warning C4244: 'return': conversion from 'const float' to 'const int', possible loss of data
+  main.cpp
+C:\Users\tommaso\OneDrive - Piqubo\Desktop\VisualStudioSDLProject\LunarLander\Entity.h(91,55): warning C4244: 'return': conversion from 'const float' to 'const int', possible loss of data
+C:\Users\tommaso\OneDrive - Piqubo\Desktop\VisualStudioSDLProject\LunarLander\Entity.h(92,55): warning C4244: 'return': conversion from 'const float' to 'const int', possible loss of data
+  ShaderProgram.cpp
+  Generating Code...
+  SDLProject.vcxproj -> C:\Users\tommaso\OneDrive - Piqubo\Desktop\VisualStudioSDLProject\LunarLander\Debug\SDLProject.exe
