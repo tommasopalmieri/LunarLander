@@ -16,6 +16,8 @@
 // the "fire" under the rocket was taken from lunar-battle-pack, and attached to the rocket.
 
 
+// git repo: https://github.com/tommasopalmieri/LunarLander
+
 
 #define LOG(argument) std::cout << argument << '\n'
 #define STB_IMAGE_IMPLEMENTATION
